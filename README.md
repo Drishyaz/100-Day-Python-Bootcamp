@@ -9,4 +9,5 @@ Each day will be marked as 'Day-1' or with the respective day number. The code w
 - Day 3 - Treasure Island Game
 - Day 4 - Rock Paper Scissors Game
 - Day 5 - Password Generator
+- Day 6-7 - Hangman Game
 - 
