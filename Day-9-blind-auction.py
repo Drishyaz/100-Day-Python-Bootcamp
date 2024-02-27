@@ -1,7 +1,18 @@
 # LIVE DEMO: https://replit.com/@guardianblossom/blind-auction-start#main.py
 from replit import clear
-from art import logo
-
+logo = '''
+                         ___________
+                         \         /
+                          )_______(
+                          |"""""""|_.-._,.---------.,_.-._
+                          |       | | |               | | ''-.
+                          |       |_| |_             _| |_..-'
+                          |_______| '-' `'---------'` '-'
+                          )"""""""(
+                         /_________\\
+                       .-------------.
+                      /_______________\\
+'''
 #HINT: You can call clear() to clear the output in the console.
 print(logo)
 bids = {}
