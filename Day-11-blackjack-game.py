@@ -1,5 +1,5 @@
-# LIVE DEMO: 
-logo = """https://replit.com/@guardianblossom/day-11-blackjack-start
+# LIVE DEMO: https://replit.com/@guardianblossom/day-11-blackjack-start
+logo = """
 .------.            _     _            _    _            _    
 |A_  _ |.          | |   | |          | |  (_)          | |   
 |( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
