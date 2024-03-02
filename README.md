@@ -16,4 +16,5 @@ Each day will be marked as 'Day-1' or with the respective day number. The code w
 - Day 11 - Blackjack Game
 - Day 12 - Number Guessing Game
 - Day 13 - Love Calculator Game
+- Day 14 - Higher and Lower Game
 - 
