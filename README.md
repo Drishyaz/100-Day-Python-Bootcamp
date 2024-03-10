@@ -22,4 +22,5 @@ Each day will be marked as 'Day-1' or with the respective day number. The code w
 - Day 17 - Quiz Game
 - Day 18 - Hirst/Spot Painting
 - Day 19 - Etch a Sketch
+- Day 19 - Turtle Race
 - Day 20 - 
