@@ -1,3 +1,5 @@
+# LIVE DEMO: https://replit.com/@guardianblossom/Day-15-coffee-machine#main.py
+
 MENU = {
     "espresso": {
         "ingredients": {
