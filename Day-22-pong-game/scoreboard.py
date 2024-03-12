@@ -2,6 +2,7 @@ from turtle import Turtle, Screen
 ALIGNMENT = "center"
 FONT = ("Courier", 48, "normal")
 
+# Scoreboard inherits the Turtle class, to easily access and use all its methods and attributes
 class Scoreboard(Turtle):
     # initializes the scoreboard => white colored, penup, hidden turtle, etc
     def __init__(self):
