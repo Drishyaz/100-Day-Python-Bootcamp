@@ -20,7 +20,7 @@ scoreboard = Scoreboard()
 game_is_on = True
 while game_is_on:
     ball.move()
-    # after turning off, you have to manually update the screen
+    # after turning off the animation, you have to manually update the screen
     screen.update()
     # the animation delay changes according to the ball's moving speed
     time.sleep(ball.move_speed)
