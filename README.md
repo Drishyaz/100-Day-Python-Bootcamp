@@ -26,4 +26,4 @@ Each day will be marked as 'Day-1' or with the respective day number. The code w
 - Day 20-21 - Snake Game \[Updated with High score feature\]
 - Day 22 - Pong Game
 - Day 23 - Turtle Crossing
-- 
+- Day 24 - Mail Merge
