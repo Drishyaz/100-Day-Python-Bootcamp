@@ -1,3 +1,5 @@
+# This is a game, where you can see a map of North America, and you have to guess its 50 states one by one
+# India-state-game work is in progress. Soon that will be out too, so Indian locals can enjoy the state guessing too!
 import turtle
 import pandas
 
