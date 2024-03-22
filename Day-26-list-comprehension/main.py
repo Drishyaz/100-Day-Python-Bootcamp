@@ -60,3 +60,9 @@ student_scores = {name: random.randint(50, 100) for name in names}
 print(student_scores)     # {'Alex': 57, 'Beth': 58, 'Caroline': 63, 'Dave': 98, 'Eleanor': 60, 'Freddie': 65}
 passed_students = {student:score for (student,score) in student_scores.items() if score > 59}
 print(passed_students)    # {'Caroline': 63, 'Dave': 98, 'Eleanor': 60, 'Freddie': 65}
+
+# CREATE A DICTIONARY THAT WILL PRINT EACH WORD OF A SENTENCE AND THE LENGTH OF THE WORD
+sentence = input().split()       # What is the Airspeed Velocity of an Unladen Swallow?
+result = {word:len(word) for word in sentence}
+print(result)
+# result = {'What': 4, 'is': 2, 'the': 3, 'Airspeed': 8, 'Velocity': 8, 'of': 2, 'an': 2, 'Unladen': 7, 'Swallow?': 8}
