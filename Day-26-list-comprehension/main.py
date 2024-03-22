@@ -49,7 +49,7 @@ result = [n for n in list1 if n in list2]       # lastly we check for each item 
 
 print(sorted(result))                           # sort the list as we print it, otherwise it is in the order of list1
 
-# DICTIONARY COMPREHENSION coming up!!!
+# DICTIONARY COMPREHENSION
 # new_dict = {new_key: new_value for item in list}
 # new_dict = {new_key: new_value for item in list if test}
 # new_dict = {new_key: new_value for (key,value) in dict.items()}
