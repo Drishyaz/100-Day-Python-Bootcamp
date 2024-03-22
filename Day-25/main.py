@@ -63,3 +63,31 @@ data_dict = {                                                                   
 df = pandas.DataFrame(data_dict)                                                # convert this data to a dataframe
 df.to_csv("squirrel_count.csv")                                                 # convert the dataframe to a CSV
 
+# student_dict = {
+#     "students" : ["Angela", "Zhask", "Pharsa", "Nana"],
+#     "scores"   : [56,89,78,88]
+# }
+# # print(student_dict)
+# # # Looping through a dictionary
+# # for (key,value) in student_dict.items():
+# #     print(value)
+
+# # dict to DataFrame
+# student_data_frame = pandas.DataFrame(student_dict)
+# print(student_data_frame)
+
+# # Looping through columns in DataFrame
+# # for (key,value) in student_data_frame.items():
+# #     print(key)      # prints only the keys => Angela, Zhask, Pharsa, Nana
+# #     print(value)        # prints only the valeus => 56,89,78,88
+
+# # Looping through rows in DataFrame:
+# for (index,row) in student_data_frame.iterrows():
+#     if row.students == "Angela":    # to print the data that matches a specific condition
+#         print(row.scores)
+#     # print(index)                  # prints only the indexes => 0,1,2,3
+#     # print(row)                    # prints the rows
+#                                     # Name: 1, dtype: object
+#                                     # students    Pharsa
+#                                     # scores          78
+#     # print(row.scores)             # prints the scores of each row => 56,89,78,88
