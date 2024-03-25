@@ -29,4 +29,5 @@ Each day will be marked as 'Day-1' or with the respective day number. The code w
 - Day 24 - Mail Merge
 - Day 25 - Pandas Library, US States Game
 - Day 26 - List Comprehension, NATO Alphabet Project
-- Day 27 - 
+- Day 27 - *args, **kwargs, tkinter, Miles to Km Converter
+- 
