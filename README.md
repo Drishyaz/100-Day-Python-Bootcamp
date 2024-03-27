@@ -31,4 +31,5 @@ Each day will be marked as 'Day-1' or with the respective day number. The code w
 - Day 26 - List Comprehension, NATO Alphabet Project
 - Day 27 - *args, **kwargs, tkinter, Miles to Km Converter
 - Day 28 - Pomodoro Timer GUI
+- Day 29 - Password Manager GUI
 - 
