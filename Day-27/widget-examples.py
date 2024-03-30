@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 # Creating a new window and title and size dimensions
 window = Tk()
@@ -46,6 +47,13 @@ def spinbox_used():
 spinbox = Spinbox(from_=18, to=25, width=5, command=spinbox_used)
 spinbox.pack()
 
+# ComboBox
+diet = ["Veg", "Non Veg", "Vegan", "Vampire"]
+combo = ttk.Combobox(window, values=diet, width=38)
+combo.pack()
+def selected_option(event):
+    print(combo.get())
+combo.bind("<<ComboboxSelected>>", selected_option)
 
 # Scale
 # Called with current scale value.
