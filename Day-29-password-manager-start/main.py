@@ -55,11 +55,12 @@ def generate_password():
 # saves entered details into a CSV file whenever the "ADD PASSWORD" button is clicked
 def save_password():
     global option
-    with open("password_manager_data.csv", "a") as f:
-        f.write(f"{website_entry.get()},{option},{pass_entry.get()}")
-    # DIALOG
-    messagebox.showinfo(message="Password Saved Successfully!")
-
+    decision = messagebox.askyesno(title="Details entered", message=f"These are the details entered:\nWebsite: {website_entry.get()}\nEmail: {option}\nPassword: {pass_entry.get()}\nIs it OK to save these details?")
+    if decision:
+        with open("password_manager_data.csv", "a") as f:
+            f.write(f"{website_entry.get()},{option},{pass_entry.get()}\n")
+        # search_results.config(text="Password Saved Successfully!")
+        messagebox.showinfo(message="Password Saved Successfully!")     # DIALOG
 # ---------------------------- UI SETUP ------------------------------- #
 
 
