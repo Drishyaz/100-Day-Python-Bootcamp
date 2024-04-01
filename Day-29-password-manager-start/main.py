@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import pandas
 import random
 
@@ -7,26 +7,26 @@ option = ""
 
 
 # ---------------------------- SEARCH PASSWORD ------------------------------- #
-# enter website, and search which emails are logged in within the website, along with the passw
+# enter the website, and search which emails are logged in within the website, along with the pasw
 def search_password():
     website = website_entry.get()           # get website input
     if website == "":                       # if website field empty, show error message
-        search_results.config(text="Please Enter Website before searching for passwords.", fg="red")
+        messagebox.showinfo(message="Please Enter Website before searching for passwords.")
         return
 
     data = pandas.read_csv("password_manager_data.csv")
     msg = ""
 
     found = False                           # 'found' will check if the website exists in the file at all
-    for (index, row) in data.iterrows():    # loop through the dataframes
+    for (index, row) in data.iterrows():    # loop through the data frames
         if row.website == website:          # if website found, add to 'msg'
             found = True
             msg += f"Email: {row.email}, Password: {row.password}\n"
 
-    if not found:                           # if website doesn't exist, show message 'msg'
-        msg += "No emails found registered with the website.."
+    if not found:                           # if the website doesn't exist, show message 'msg'
+        messagebox.show info(message="No emails found registered with the website..")    # dialog
 
-    search_results.config(text=msg)         # at last display the search results in label
+    search_results.config(text=msg)         # at last display the search results in the label
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -52,26 +52,13 @@ def generate_password():
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-# saves entered details into a csv file whenever "ADD PASSWORD" button is clicked
+# saves entered details into a CSV file whenever the "ADD PASSWORD" button is clicked
 def save_password():
     global option
-    # # We create a dictionary with the entered data
-    # data = {
-    #     "website":  [website_entry.get()],
-    #     "email":    [option],
-    #     "password": [pass_entry.get()]
-    # }
-    # # create a data frame of that dict
-    # data_df = pandas.DataFrame(data)
-    # # save the data to an existing csv
-    # # df.csv(existing_csv, mode, index, header)
-    # data_df.to_csv("password_manager_data.csv", mode='a', index=False, header=False)
-    # # df = pandas.read_csv("password_manager_data.csv")
-    # # print(df)
-
-    # ANOTHER WAY - FILE HANDLING - much more simpler
     with open("password_manager_data.csv", "a") as f:
         f.write(f"{website_entry.get()},{option},{pass_entry.get()}")
+    # DIALOG
+    messagebox.showinfo(message="Password Saved Successfully!")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -80,7 +67,7 @@ window = Tk()
 window.title("Password Manager")
 window.config(width=400, height=400, padx=20, pady=20, bg="white")
 
-# lock image in the middle
+# Lock image in the middle
 canvas = Canvas(width=200, height=200, bg="white", highlightthickness=0)
 lock_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=lock_img)
@@ -107,7 +94,7 @@ pass_entry.grid(row=3, column=1)
 
 # COMBOBOX - email list
 emails = ["ab@gmail.com","de@gmail.com"]                                # add your emails inside this list
-email_list_combo = ttk.Combobox(window, values=emails, width=38)        # you can select your email from the drop down list
+email_list_combo = ttk.Combobox(window, values=emails, width=38)        # You can select your email from the drop-down list
 email_list_combo.grid(row=2, column=1, columnspan=2)
 
 
