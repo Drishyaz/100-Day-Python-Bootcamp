@@ -2,29 +2,23 @@ from tkinter import *
 from tkinter import ttk, messagebox
 import pandas
 import random
+import pyperclip
 
 option = ""
 
-
 # ---------------------------- SEARCH PASSWORD ------------------------------- #
-# enter the website, and search which emails are logged in within the website, along with the pasw
+# enter the website, and search which emails are logged in within the website, along with the passw
 def search_password():
-    website = website_entry.get()           # get website input
-    if website == "":                       # if website field empty, show error message
-        messagebox.showinfo(message="Please Enter Website before searching for passwords.")
-        return
-
     data = pandas.read_csv("password_manager_data.csv")
     msg = ""
-
     found = False                           # 'found' will check if the website exists in the file at all
     for (index, row) in data.iterrows():    # loop through the data frames
-        if row.website == website:          # if website found, add to 'msg'
+        if row.website == website_entry.get():          # if website found, add to 'msg'
             found = True
             msg += f"Email: {row.email}, Password: {row.password}\n"
 
     if not found:                           # if the website doesn't exist, show message 'msg'
-        messagebox.show info(message="No emails found registered with the website..")    # dialog
+        messagebox.showinfo(message="No emails found registered with the website..")    # dialog
 
     search_results.config(text=msg)         # at last display the search results in the label
 
@@ -39,36 +33,43 @@ def generate_password():
                'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
-    pasw = []
-    for n in range(6):
-        pasw.append(random.choice(letters))
-    for n in range(2):
-        pasw.append(random.choice(numbers))
-    for n in range(2):
-        pasw.append(random.choice(symbols))
-    random.shuffle(pasw)
-    password = "".join(pasw[:])
+
+    password_letters = [random.choice(letters) for _ in range(random.randint(8, 10))]
+    password_numbers = [random.choice(numbers) for _ in range(random.randint(2, 4))]
+    password_symbols = [random.choice(symbols) for _ in range(random.randint(2, 4))]
+
+    password_list = password_letters + password_numbers + password_symbols
+    random.shuffle(password_list)
+
+    password = "".join(password_list[:])
     pass_entry.insert(END, string=password)
+    pyperclip.copy(password)        # copied to the clipboard as soon as the password gets generated
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 # saves entered details into a CSV file whenever the "ADD PASSWORD" button is clicked
 def save_password():
     global option
-    decision = messagebox.askyesno(title="Details entered", message=f"These are the details entered:\nWebsite: {website_entry.get()}\nEmail: {option}\nPassword: {pass_entry.get()}\nIs it OK to save these details?")
-    if decision:
-        with open("password_manager_data.csv", "a") as f:
-            f.write(f"{website_entry.get()},{option},{pass_entry.get()}\n")
-        # search_results.config(text="Password Saved Successfully!")
-        messagebox.showinfo(message="Password Saved Successfully!")     # DIALOG
-# ---------------------------- UI SETUP ------------------------------- #
+    if website_entry.get() == "":
+        messagebox.showinfo(message="Website Field Empty!")
+    elif email_list_combo.get() == "":
+        messagebox.showinfo(message="Email not Selected!")
+    elif pass_entry.get() == "":
+        messagebox.showinfo(message="Password Field Empty!")
+    else:
+        decision = messagebox.askyesno(title="Details entered", message=f"These are the details entered:\nWebsite: {website_entry.get()}\nEmail: {option}\nPassword: {pass_entry.get()}\nIs it OK to save these details?")
+        if decision:
+            with open("password_manager_data.csv", "a") as f:
+                f.write(f"{website_entry.get()},{option},{pass_entry.get()}\n")
+            messagebox.showinfo(message="Password Saved Successfully!")         # DIALOG
 
+# ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
 window.title("Password Manager")
 window.config(width=400, height=400, padx=20, pady=20, bg="white")
 
-# Lock image in the middle
+# Lock the image in the middle
 canvas = Canvas(width=200, height=200, bg="white", highlightthickness=0)
 lock_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=lock_img)
@@ -81,7 +82,7 @@ email_label = Label(text="Email/Username:", bg="white", pady=10)        # email 
 email_label.grid(row=2, column=0)
 pass_label = Label(text="Password:", bg="white", pady=14)               # password label
 pass_label.grid(row=3, column=0)
-search_results = Label(text="", bg="white", pady=10)                      # search results label
+search_results = Label(text="", bg="white", pady=10)                    # search results label
 search_results.grid(row=6, column=0, columnspan=3)
 
 # ENTRIES - SINGLE LINE TEXT INPUT
@@ -94,16 +95,14 @@ pass_entry = Entry(width=22)                                            # passwo
 pass_entry.grid(row=3, column=1)
 
 # COMBOBOX - email list
-emails = ["ab@gmail.com","de@gmail.com"]                                # add your emails inside this list
-email_list_combo = ttk.Combobox(window, values=emails, width=38)        # You can select your email from the drop-down list
+emails = ["abc@gmail.com", "def@gmail.com"]
+email_list_combo = ttk.Combobox(window, values=emails, width=38)
 email_list_combo.grid(row=2, column=1, columnspan=2)
 
 
 def selected_option(event):
     global option
     option = email_list_combo.get()
-    # print(option)
-
 email_list_combo.bind("<<ComboboxSelected>>", selected_option)
 
 # BUTTONS
