@@ -55,19 +55,23 @@ def generate_password():
 # saves entered details into a csv file whenever "ADD PASSWORD" button is clicked
 def save_password():
     global option
-    # We create a dictionary with the entered data
-    data = {
-        "website":  [website_entry.get()],
-        "email":    [option],
-        "password": [pass_entry.get()]
-    }
-    # create a data frame of that dict
-    data_df = pandas.DataFrame(data)
-    # save the data to an existing csv
-    # df.csv(existing_csv, mode, index, header)
-    data_df.to_csv("password_manager_data.csv", mode='a', index=False, header=False)
-    # df = pandas.read_csv("password_manager_data.csv")
-    # print(df)
+    # # We create a dictionary with the entered data
+    # data = {
+    #     "website":  [website_entry.get()],
+    #     "email":    [option],
+    #     "password": [pass_entry.get()]
+    # }
+    # # create a data frame of that dict
+    # data_df = pandas.DataFrame(data)
+    # # save the data to an existing csv
+    # # df.csv(existing_csv, mode, index, header)
+    # data_df.to_csv("password_manager_data.csv", mode='a', index=False, header=False)
+    # # df = pandas.read_csv("password_manager_data.csv")
+    # # print(df)
+
+    # ANOTHER WAY - FILE HANDLING - much more simpler
+    with open("password_manager_data.csv", "a") as f:
+        f.write(f"{website_entry.get()},{option},{pass_entry.get()}")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
