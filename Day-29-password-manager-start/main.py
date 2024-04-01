@@ -102,8 +102,8 @@ pass_entry = Entry(width=22)                                            # passwo
 pass_entry.grid(row=3, column=1)
 
 # COMBOBOX - email list
-emails = ["guardianblossom@gmail.com", "drishyaz1999@gmail.com", "drishyaaz01@gmail.com", "agarwaldrishyaz@gmail.com", "thisisdrishya.ag@gmail.com", "miku.to.iimasu@gmail.com"]
-email_list_combo = ttk.Combobox(window, values=emails, width=38)
+emails = ["ab@gmail.com","de@gmail.com"]                                # add your emails inside this list
+email_list_combo = ttk.Combobox(window, values=emails, width=38)        # you can select your email from the drop down list
 email_list_combo.grid(row=2, column=1, columnspan=2)
 
 
